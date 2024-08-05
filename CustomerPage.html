@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+    <style>
+
+        body{
+            color: white;
+        }
+        #background-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 100px;
+        }
+
+        .boxy{
+            border-radius: 15px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5% 15%;
+            display: grid;
+            grid-template-areas: 
+            "field0 field0 field0 box"
+            "field1 field1 field2 field2"
+            "field3 field3 field4 field4"
+            "field5 field5 field5 field5";
+            gap:10px;
+        }
+
+        .field0{grid-area: field0;}
+        .field1{grid-area: field1;}
+        .field2{grid-area: field2;}
+        .field3{grid-area: field3;}
+        .field4{grid-area: field4;}
+        .field5{grid-area: field5;}
+
+        label{
+            display: block;
+            padding: 5px;
+        }
+
+        .dropdown {
+            display: none;
+            color: black;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            width: 300px;
+            z-index: 1;
+        }
+        .dropdown-content {
+            padding: 15px;
+        }
+        .dropdown-content label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        .dropdown-content input[type="number"] {
+            width: 50px;
+        }
+        .dropdown-content .travel-class label {
+            margin-right: 20px;
+        }
+        .box {
+            grid-area: box;
+            cursor: pointer;
+            padding: 5px;
+            border: 1px solid #ccc;
+            width: 300px;
+            text-align: center;
+        }
+
+        input[type=text],input[type=date]{
+            width: 75%;
+            padding: 6px;
+            
+        }
+
+        .boxy button{
+            padding: 10px;
+            width: 100%;
+            margin: none;
+        }
+
+        .loggout button{
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            position: relative;
+            right: 75px;
+            top: 15px;
+        }
+
+        h3{
+            text-align: center;
+            font-size: 35px;
+        }
+    </style>
+</head>
+<body>
+    <div class="loggout" align="right">
+        <button onclick="Logout()">Logout</button>
+    </div>
+        <video id="background-video" autoplay loop muted>
+            <source src="bg1.mp4" type="video/mp4">
+        </video>
+
+    <h3>Fly to your dream destination — book your tickets today!</h3>
+    <div class="container">
+        <div class="boxy">    
+            <div class="field0">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+            </div>
+            
+            <div class="field1">
+                <label for="departure-city">From:</label>
+                <input type="text" id="departure-city" name="departure-city" >
+            </div>
+
+            <div class="field2">
+                <label for="arrival-city">To:</label>
+                <input type="text" id="arrival-city" name="arrival-city" >
+            </div>
+
+            <div class="field3">
+                <label for="departure-date">Departure Date:</label>
+                <input type="date" id="departure-date" name="departure-date">
+            </div>
+
+            <div class="field4">
+                <label for="return-date">Return Date:</label>
+                <input type="date" id="return-date" name="return-date" placeholder="Optional">
+            </div>
+
+            <div class="box" id="travellerBox">1 Adult, Economy</div>
+            <div class="dropdown" id="dropdown">
+                <div class="dropdown-content">
+                    <label>Adults (Aged 12+ yrs)
+                        <input type="number" value="1" min="1" id="adultCount">
+                    </label>
+                    <label>Children (Aged 2-12 yrs)
+                        <input type="number" value="0" min="0" id="childCount">
+                    </label>
+                    <label>Infants (Below 2 yrs)
+                        <input type="number" value="0" min="0" id="infantCount">
+                    </label>
+                    <div class="travel-class">
+                        <label><input type="radio" name="class" value="Economy" checked> Economy</label>
+                        <label><input type="radio" name="class" value="Premium Economy"> Premium Economy</label>
+                        <label><input type="radio" name="class" value="Business"> Business</label>
+                        <label><input type="radio" name="class" value="First Class"> First Class</label>
+                    </div>
+                    <button id="doneBtn">Done</button>
+                </div>
+            </div>
+            <div class="field5">
+                <button onclick="searchFlights()">Book Flights</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const travellerBox = document.getElementById('travellerBox');
+        const dropdown = document.getElementById('dropdown');
+        const doneBtn = document.getElementById('doneBtn');
+
+        travellerBox.addEventListener('click', () => {
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        });
+
+        doneBtn.addEventListener('click', () => {
+            const adultCount = document.getElementById('adultCount').value;
+            const childCount = document.getElementById('childCount').value;
+            const infantCount = document.getElementById('infantCount').value;
+            const travelClass = document.querySelector('input[name="class"]:checked').value;
+
+            travellerBox.innerText = `${adultCount} Adult${adultCount > 1 ? 's' : ''}, ${travelClass}`;
+            if (childCount > 0) {
+                travellerBox.innerText += `, ${childCount} Child${childCount > 1 ? 'ren' : ''}`;
+            }
+            if (infantCount > 0) {
+                travellerBox.innerText += `, ${infantCount} Infant${infantCount > 1 ? 's' : ''}`;
+            }
+
+            dropdown.style.display = 'none';
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!travellerBox.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+
+
+        function searchFlights() {
+            const name = document.getElementById('name').value;
+            const departureCity = document.getElementById('departure-city').value;
+            const arrivalCity = document.getElementById('arrival-city').value;
+            const departureDate = document.getElementById('departure-date').value;
+            const returnDate = document.getElementById('return-date').value;
+            const travelers = document.getElementById('travellerBox').value;
+        
+
+            if (name && departureCity && arrivalCity && departureDate && returnDate && travellerBox) {
+                const booking = {
+                    name,
+                    departureCity,
+                    arrivalCity,
+                    departureDate,
+                    returnDate,
+                    travelers,
+                };
+
+                let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+                bookings.push(booking);
+                localStorage.setItem('bookings', JSON.stringify(bookings));
+
+                alert('Booking successful!');    
+                Clear();
+            } else {
+                alert('Please fill in all the fields.');
+            }
+        }
+
+        function Clear(){
+            document.getElementById('name').value = "";
+            document.getElementById('departure-city').value = "";
+            document.getElementById('departure-date').value = "";
+            document.getElementById('arrival-city').value = "";
+            document.getElementById('return-date').value = "";
+        }
+
+        function Logout(){
+            window.location.href="Project.html";
+        }
+</script>
+</body>
+</html>
