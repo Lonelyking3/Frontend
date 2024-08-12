@@ -1,252 +1,328 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flight Booking</title>
+<html>
+    <head>
+        <title>Flight booking</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    </head>
     <style>
 
-        body{
-            color: white;
+        *{
+            font-family: "Bebas Neue", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            margin: 0;
         }
-        #background-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+
+        /* ---This block is for Home and Navbar--- */
+        
+        
+        /* HomePage */
+        
+        .scroll-to-top {
             position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007BFF;
+            color: black;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            z-index: 10000;
+        }
+
+        #background-video{
+            width: 100%;
+            height: 80%;
+            object-fit: cover;
+            position:absolute;
             left: 0;
-            right: 0;
-            top: 0;
+            top:0;
             bottom: 0;
+            right: 0;
             z-index: -1;
         }
+
         .container{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 100px;
-        }
-
-        .boxy{
-            border-radius: 15px;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 5% 15%;
-            display: grid;
-            grid-template-areas: 
-            "field0 field0 field0 box"
-            "field1 field1 field2 field2"
-            "field3 field3 field4 field4"
-            "field5 field5 field5 field5";
-            gap:10px;
-        }
-
-        .field0{grid-area: field0;}
-        .field1{grid-area: field1;}
-        .field2{grid-area: field2;}
-        .field3{grid-area: field3;}
-        .field4{grid-area: field4;}
-        .field5{grid-area: field5;}
-
-        label{
-            display: block;
-            padding: 5px;
-        }
-
-        .dropdown {
-            display: none;
-            color: black;
-            position: absolute;
-            background-color: white;
-            border: 1px solid #ccc;
-            width: 300px;
+            padding: 250px;
+            position:relative;
+            top:-20px;
+            left: -30;
             z-index: 1;
         }
-        .dropdown-content {
-            padding: 15px;
-        }
-        .dropdown-content label {
-            display: block;
-            margin-bottom: 8px;
-        }
-        .dropdown-content input[type="number"] {
-            width: 50px;
-        }
-        .dropdown-content .travel-class label {
-            margin-right: 20px;
-        }
-        .box {
-            grid-area: box;
-            cursor: pointer;
-            padding: 5px;
-            border: 1px solid #ccc;
-            width: 300px;
-            text-align: center;
+
+        #home{
+            box-shadow: 0 0 30px rgba(31,49,111,1) ;
+            position: relative;
+            display: flex;
+            border-radius: 15px;
+            background-color: white;
+            padding: 50px;
+            width:600px;
+            height: 15%;
+            left: 100px;
+            right: 100px;
+            display: grid;
+            grid-template-areas:
+            "name name name name"
+            "city city date date"
+            
+            ;
         }
 
-        input[type=text],input[type=date]{
-            width: 75%;
-            padding: 6px;
+        .name{
+            grid-area: name;
+            display: block;
+            padding: 5px;
+            width:250px;
+            margin-bottom:10px;
+        }
+
+        input[type = "text"]{
+            border: black solid 1px;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            
+        }
+        
+        input[type = "text"]:hover{
+            color:white;
+            background-image: linear-gradient(to right, #5b99c2 2%, #1f316f 100%);
+            border:white solid 1px;
+            border-radius: 3px;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            transition: .5s ease-in;
+        }
+
+
+        .city{
+            grid-area: city; 
+            display: block;
+            margin-top: 20px;
+        }
+
+
+        .date{
+            grid-area: date;
+            display: block;
+            position:relative;
+            left: -75px;
+            top:-35px;
+        }
+
+        .date input[type = "date"]{
+            border: black solid 1px;
+        }
+
+        .date input[type = "date"]:hover{
+            background-image: linear-gradient(to right, #5b99c2 2%, #1f316f 100%);
+            transition: .5s ease-in;
+            color:white;    
+            border: #5b99c2 solid 1px;
+        }
+
+        label{display: block;}
+        .departure-city{border-right: none;padding: 5px;}
+        .arrival-city{position:relative; left: 0px; padding: 5px;}
+        #departure-date{padding: 20px;border-radius: 5px;}
+        #arrival-date{padding: 20px; border-radius: 5px;}
+
+
+        .arr-date{
+            position: relative;
+            top: -81px;
+            left: 150px;
+        }
+        
+        .btn{
+            position: relative;
+            top: -80px;
+            left: 250px;
+            border-radius: 10px;
+            border: none;
+            background-color:#5b99c2;    
+        }
+
+        .btn:hover{
+        box-shadow: 0 0 30px rgba(31,49,111,.5);
+        color: white;
+        background-image: linear-gradient(to right, #5b99c2 2%, #1f316f 100%);
+        transition: .5s ease-in;
+        border: white solid 1px;
+        }
+
+        #home button{
+            padding: 10px;
+            display: block;
+        }
+
+        #hook{
+            color:white;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            top:120px;
+            font-size: 100px;
+            z-index: -1;
+            margin: 25px;
+        }
+
+        /* Navigation Bar */
+        
+        .nav{
+            display: flex;
+            justify-content: center;
+            position: relative;
+            top:20;
+        }
+
+        .navBox{
+            backdrop-filter: blur(30px);
+            border-radius: 10px;
+            box-shadow: 0px 0px 30px rgba(31,49,111, 1);
+            display: flex;
+            justify-content: center;
+            width: 50%;
+        } 
+
+        .nav button{
+            color: white;
+            font-size: 15px;
+            padding: 5px 50px 5px 50px;
+            background-color: transparent;
+            border: none;
+            margin: 10px;
+            
             
         }
 
-        .boxy button{
-            padding: 10px;
-            width: 100%;
-            margin: none;
+        .nav button:hover{
+            color: #1f316f;
         }
+        /* ---This Block is for About Us--- */
 
-        .loggout button{
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            position: relative;
-            right: 75px;
-            top: 15px;
-        }
-
-        h3{
+        #about{
+            border: black solid 1px;
             text-align: center;
-            font-size: 35px;
+            padding: 100px;
+            position: relative;
+            
         }
+
+        footer{
+            background-color: #1f316f;
+            width: 100%;
+        }
+        
     </style>
-</head>
-<body>
-    <div class="loggout" align="right">
-        <button onclick="Logout()">Logout</button>
-    </div>
+    
+    
+    <body>
+        <div id="top"></div>
         <video id="background-video" autoplay loop muted>
             <source src="bg1.mp4" type="video/mp4">
         </video>
 
-    <h3>Fly to your dream destination — book your tickets today!</h3>
-    <div class="container">
-        <div class="boxy">    
-            <div class="field0">
-                <label for="name">Name:</label>
-                <input type="text" id="name" required>
-            </div>
-            
-            <div class="field1">
-                <label for="departure-city">From:</label>
-                <input type="text" id="departure-city" name="departure-city" >
-            </div>
-
-            <div class="field2">
-                <label for="arrival-city">To:</label>
-                <input type="text" id="arrival-city" name="arrival-city" >
-            </div>
-
-            <div class="field3">
-                <label for="departure-date">Departure Date:</label>
-                <input type="date" id="departure-date" name="departure-date">
-            </div>
-
-            <div class="field4">
-                <label for="return-date">Return Date:</label>
-                <input type="date" id="return-date" name="return-date" placeholder="Optional">
-            </div>
-
-            <div class="box" id="travellerBox">1 Adult, Economy</div>
-            <div class="dropdown" id="dropdown">
-                <div class="dropdown-content">
-                    <label>Adults (Aged 12+ yrs)
-                        <input type="number" value="1" min="1" id="adultCount">
-                    </label>
-                    <label>Children (Aged 2-12 yrs)
-                        <input type="number" value="0" min="0" id="childCount">
-                    </label>
-                    <label>Infants (Below 2 yrs)
-                        <input type="number" value="0" min="0" id="infantCount">
-                    </label>
-                    <div class="travel-class">
-                        <label><input type="radio" name="class" value="Economy" checked> Economy</label>
-                        <label><input type="radio" name="class" value="Premium Economy"> Premium Economy</label>
-                        <label><input type="radio" name="class" value="Business"> Business</label>
-                        <label><input type="radio" name="class" value="First Class"> First Class</label>
-                    </div>
-                    <button id="doneBtn">Done</button>
+        </video>
+        <div class="homepage">
+            <div class="nav">
+                <div class="navBox">
+                    <button onclick="scrollToSection('home')">Home</button>
+                    <button onclick="scrollToSection('about')">About</button>
+                    <button onclick="scrollToSection('contactus')">Contact Us</button>
+                    <button onclick="back()">Logout</button>
                 </div>
             </div>
-            <div class="field5">
-                <button onclick="searchFlights()">Book Flights</button>
+
+            <button class="scroll-to-top" onclick="scrollToSection('top')">Go to Top</button>
+
+
+            <h2 id="hook">Book your dream flight now!</h2>
+            
+            
+            
+            <div class="container">
+                <div id="Home" class="section">
+                    <input type="text" id="name" class="name" placeholder="Name" required>
+                    <div class="city">
+
+                        <input type="text" id="departure-city" class="departure-city" placeholder="From:" required>
+                        <input type="text" id="arrival-city" class="arrival-city" placeholder="To:" required>
+                    </div>
+                    <div class="date">
+                        <div class="dep-date">
+                            <label for="departure-date">Departure Time: </label>
+                            <input type="date" id="departure-date" required>
+                        </div>
+                        <div class="arr-date">
+                            <label for="arrival-date">Arrival Time: </label>
+                            <input type="date" id="arrival-date" required>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="book()">Book now!!</button>
+                </div>
             </div>
+            
+            
+        
+
+            <div id="about" class="section">
+                <strong>About Us</strong>
+                <p>
+                    Welcome to InfineAIR, your go-to platform for hassle-free flight ticket booking. Whether you're planning a vacation, a business trip, or a quick getaway, we've got you covered.
+                    Our website offers a user-friendly interface, making it easy to search for flights, compare prices, and book your tickets in just a few clicks.
+                </p>
+            
+            </div>
+        
+            <div id="contactus" class="section"></div>
         </div>
-    </div>
+    
+        <footer>
+            <p>Welcome to InfineAIR, your go-to platform for hassle-free flight ticket booking. Whether you're planning a vacation, a business trip, or a quick getaway, we've got you covered.
+                    Our website offers a user-friendly interface, making it easy to search for flights, compare prices, and book your tickets in just a few clicks.</p>
+        </footer>
+    
+    </body>
+    
+    
+    
+    
+
 
     <script>
-        const travellerBox = document.getElementById('travellerBox');
-        const dropdown = document.getElementById('dropdown');
-        const doneBtn = document.getElementById('doneBtn');
-
-        travellerBox.addEventListener('click', () => {
-            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-        });
-
-        doneBtn.addEventListener('click', () => {
-            const adultCount = document.getElementById('adultCount').value;
-            const childCount = document.getElementById('childCount').value;
-            const infantCount = document.getElementById('infantCount').value;
-            const travelClass = document.querySelector('input[name="class"]:checked').value;
-
-            travellerBox.innerText = `${adultCount} Adult${adultCount > 1 ? 's' : ''}, ${travelClass}`;
-            if (childCount > 0) {
-                travellerBox.innerText += `, ${childCount} Child${childCount > 1 ? 'ren' : ''}`;
-            }
-            if (infantCount > 0) {
-                travellerBox.innerText += `, ${infantCount} Infant${infantCount > 1 ? 's' : ''}`;
-            }
-
-            dropdown.style.display = 'none';
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!travellerBox.contains(e.target) && !dropdown.contains(e.target)) {
-                dropdown.style.display = 'none';
-            }
-        });
-
-
-        function searchFlights() {
-            const name = document.getElementById('name').value;
+        function book(){
+            const Name = document.getElementById('name').value;
             const departureCity = document.getElementById('departure-city').value;
             const arrivalCity = document.getElementById('arrival-city').value;
             const departureDate = document.getElementById('departure-date').value;
-            const returnDate = document.getElementById('return-date').value;
-            const travelers = document.getElementById('travellerBox').value;
+            const arrivalDate = document.getElementById('arrival-date').value;
+
         
-
-            if (name && departureCity && arrivalCity && departureDate && returnDate && travellerBox) {
-                const booking = {
-                    name,
-                    departureCity,
-                    arrivalCity,
-                    departureDate,
-                    returnDate,
-                    travelers,
-                };
-
-                let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
-                bookings.push(booking);
-                localStorage.setItem('bookings', JSON.stringify(bookings));
-
-                alert('Booking successful!');    
-                Clear();
-            } else {
-                alert('Please fill in all the fields.');
+            if(Name && departureCity && arrivalCity && departureDate && arrivalDate){
+                alert('successfull!!')
+                clear()
             }
         }
 
-        function Clear(){
+        function clear(){
             document.getElementById('name').value = "";
             document.getElementById('departure-city').value = "";
-            document.getElementById('departure-date').value = "";
             document.getElementById('arrival-city').value = "";
-            document.getElementById('return-date').value = "";
+            document.getElementById('departure-date').value = "";
+            document.getElementById('arrival-date').value = "";
         }
 
-        function Logout(){
-            window.location.href="Project.html";
+        function scrollToSection(id){
+            document.getElementById(id).scrollIntoView({
+                behavior : 'smooth'
+            });
         }
-</script>
-</body>
+    </script>
 </html>
