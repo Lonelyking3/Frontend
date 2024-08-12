@@ -1,10 +1,11 @@
 <html>
     <head>
-        <title>Flight booking</title>
+        <title>InfineAIR</title>
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <style>
 
@@ -208,18 +209,52 @@
         /* ---This Block is for About Us--- */
 
         #about{
-            border: black solid 1px;
             text-align: center;
             padding: 100px;
             position: relative;
+            margin-bottom: 500px;
+            color:white;
+            background-color: #1f316f;
             
         }
 
+        
+        #about strong{
+            display: flex;
+            justify-content: center;
+            font-size: 75px;
+            padding-bottom:25px ;
+        }
+
+        
+
         footer{
             background-color: #1f316f;
+            color:white;
             width: 100%;
+            padding: 10px 0;
+            text-align: center;
         }
-        
+
+
+        footer ul a,p{
+            text-decoration: none;
+            color: rgba(195, 197, 197, 0.432);
+            padding-left:30px;
+        }
+
+        .scroll-to-top{
+            padding: 20px;
+            border-radius:50px ;
+            box-shadow: 0px 0px 30px rgba(31,49,111, .8);
+        }
+
+        .scroll-to-top:hover{
+            color: white;
+            background-image: linear-gradient(to right, #5b99c2 2%, #1f316f 100%);
+            transition: .5s ease-in;
+        }
+
     </style>
     
     
@@ -230,7 +265,7 @@
         </video>
 
         </video>
-        <div class="homepage">
+        <div class="homepage" id="navv">
             <div class="nav">
                 <div class="navBox">
                     <button onclick="scrollToSection('home')">Home</button>
@@ -240,7 +275,7 @@
                 </div>
             </div>
 
-            <button class="scroll-to-top" onclick="scrollToSection('top')">Go to Top</button>
+            <button class="scroll-to-top" onclick="scrollToSection('top')"><i class="fa-sharp-duotone fa-solid fa-arrow-up"></i></button>
 
 
             <h2 id="hook">Book your dream flight now!</h2>
@@ -285,8 +320,14 @@
         </div>
     
         <footer>
-            <p>Welcome to InfineAIR, your go-to platform for hassle-free flight ticket booking. Whether you're planning a vacation, a business trip, or a quick getaway, we've got you covered.
-                    Our website offers a user-friendly interface, making it easy to search for flights, compare prices, and book your tickets in just a few clicks.</p>
+            <p>Welcome to InfineAIR</p>
+            <ul>
+                <a href="#navv">Home</a>
+                <a href="#about">About</a>
+                <a href="#contactus">Contact Us</a>
+                <a href=""><i class="fa-brands fa-github"></i> Github</a>
+                <a href=""><i class="fa-brands fa-linkedin"></i>  Linked in</a>
+            </ul>
         </footer>
     
     </body>
@@ -323,6 +364,10 @@
             document.getElementById(id).scrollIntoView({
                 behavior : 'smooth'
             });
+        }
+
+        function back(){
+            window.location.href = "project.html";
         }
     </script>
 </html>
