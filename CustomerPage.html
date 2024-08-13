@@ -16,6 +16,10 @@
             margin: 0;
         }
 
+        body{
+            background-color: whitesmoke;
+        }
+
         /* ---This block is for Home and Navbar--- */
         
         
@@ -82,7 +86,7 @@
             margin-bottom:10px;
         }
 
-        input[type = "text"]{
+        input[type = "text"],input[type = "email"]{
             border: black solid 1px;
             border-top: none;
             border-left: none;
@@ -90,7 +94,9 @@
             
         }
         
-        input[type = "text"]:hover{
+        input[type = "text"]:hover,
+        input[type = "email"]:hover,
+        textarea:hover{
             color:white;
             background-image: linear-gradient(to right, #5b99c2 2%, #1f316f 100%);
             border:white solid 1px;
@@ -212,6 +218,7 @@
             text-align: center;
             padding: 100px;
             position: relative;
+            top:50px;
             margin-bottom: 500px;
             color:white;
             background-color: #1f316f;
@@ -226,8 +233,58 @@
             padding-bottom:25px ;
         }
 
-        
+        /* ---This Block is for Contact Us---  */
 
+        #contactus{
+            background-color: white ;
+            position: relative;
+            padding: 150px 50px;
+            border-radius: 15px;
+            margin: 25px;
+            top:-50px;
+            box-shadow: 0 0 30px rgba(31,49,111,.5);
+
+        }
+
+        #contactus input[type = "text"],input[type = "email"],textarea{
+            width: 100%;
+            padding: 10px;
+            position: relative;
+            top: -50; 
+        }
+
+        textarea{
+            padding: 10px 10px 150px 10px;
+            background-color: rgba(112, 114, 116, 0.171);
+        }
+
+        .con{
+            display: grid;
+            grid-template-areas: 
+            "con-name con-name con-name"
+            "con-email con-email con-email"
+            "message message message";
+            row-gap: 10px;
+        }
+
+        .con-name{grid-area: con-name;}
+        .con-email{grid-area: con-email;}
+
+        textarea{
+            grid-area: message;
+            position:relative;
+            display: block;
+            border: none;
+        }
+
+        #contactus button{
+            padding: 15px 50px;
+            position: relative;
+            top: 50px;
+            left:550px;
+        }
+
+        /* ---This block is for Footer --- */
         footer{
             background-color: #1f316f;
             color:white;
@@ -285,11 +342,14 @@
             <div class="container">
                 <div id="Home" class="section">
                     <input type="text" id="name" class="name" placeholder="Name" required>
+                    
+                    
                     <div class="city">
-
                         <input type="text" id="departure-city" class="departure-city" placeholder="From:" required>
                         <input type="text" id="arrival-city" class="arrival-city" placeholder="To:" required>
                     </div>
+
+
                     <div class="date">
                         <div class="dep-date">
                             <label for="departure-date">Departure Time: </label>
@@ -300,7 +360,11 @@
                             <input type="date" id="arrival-date" required>
                         </div>
                     </div>
+                    
+                    
                     <button class="btn" onclick="book()">Book now!!</button>
+                
+                
                 </div>
             </div>
             
@@ -316,7 +380,14 @@
             
             </div>
         
-            <div id="contactus" class="section"></div>
+            <div id="contactus" class="section">
+                <div class="con">    
+                    <input type="text" class="con-name" placeholder="Name">
+                    <input type="email" class="con-email" placeholder="Email">
+                    <textarea cols="10" rows="5" class="message" placeholder="Message"></textarea>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+            </div>
         </div>
     
         <footer>
@@ -325,8 +396,8 @@
                 <a href="#navv">Home</a>
                 <a href="#about">About</a>
                 <a href="#contactus">Contact Us</a>
-                <a href=""><i class="fa-brands fa-github"></i> Github</a>
-                <a href=""><i class="fa-brands fa-linkedin"></i>  Linked in</a>
+                <a href="https://github.com/afk-Lokesh"><i class="fa-brands fa-github"></i> Github</a>
+                <a href="https://www.linkedin.com/in/lokesh-n-48b444271"><i class="fa-brands fa-linkedin"></i>  Linked in</a>
             </ul>
         </footer>
     
