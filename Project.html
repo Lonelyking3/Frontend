@@ -1,64 +1,247 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Flight ticket Booking</title>
-    <link rel="stylesheet" type="text/css" href="Style.css">
-    <script src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
-    <body>
 
-        <video id="background-video" autoplay loop muted>
-            <source src="bg.mp4" type="video/mp4">
-        </video>
+<style>
+    *{
+        font-family: "Bebas Neue", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        box-sizing: border-box;
+    }   
+    
+    body{
+        background-image: url("Login-container.jpg");
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        min-height: 100%;
+        margin: 10%;
+    }
 
-        <div class="LoginPage">
+    .container{
+        position:relative;
+        width: 768px;
+        max-width: 100%;
+        min-height: 480px;
+        background-color: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    }
 
-            <div class="content">
-                <h1>It's a big world out there,<span>Go explore</span></h1>
-            </div>
+    .sign-In, .sign-Up{
+        position: absolute;
+        top:0;
+        left: 0;
+        height: 100%;
+        width: 50%; /* Ensure both panels are the same width */
+        transition: all 0.6s ease-in-out;
+        z-index: 1;
+    }
 
-            <div class="container">
-                <div class="login-button">
-                <!-- Customer button -->
-                <div class="cust_select" id="cust-button">
-                    <button onclick="custlogin()">Customer</button>
-                </div>
+    .sign-Up{
+        opacity: 0;
+        z-index: 1;
+    }
 
-                <!-- Management button -->
-                <div class="manage-select" id="mana-button">
-                    <button onclick="manageLogin()">Management</button>
-                </div>
-            </div>
+    .sign-In{
+        z-index: 2;
+    }
 
-                
-                <!-- Customer Login -->
-                <div id="cust-login" class="hidden">
-                    <label for="Username">Username</label>
-                    <input type="text"  class="username" id="username" placeholder="Username">
-                    <label for="password">Password</label>
-                    <input type="password" class="password" id="password"  placeholder="password">
-                    <input type="checkbox" onclick="hiddenpass()">Show Password
-                    <div class="Cust-container">
-                        <button onclick="CustSubmit()">Submit</button>
-                        <button onclick="Back()">Cancel</button>
-                    </div>
-                </div>
+    form{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        flex-direction: column;
+        padding: 0 50px;
+        height: 100%;
+    }
 
-                
+    h1{
+        font-weight: bold;
+        margin: 0;
+    }
 
-                <!--Management Login -->
-                <div id="Manage-Login" class="hidden">
-                    <label for="username">Username</label>
-                    <input type="text"  class="username" id="Musername" placeholder="Username">
-                    <label for="password">Password</label>
-                    <input type="password" class="password" id="Mpassword" placeholder="password">
-                    <input type="checkbox" onclick="hiddenpass()">Show Password
-                    <div class="Manage-container">
-                        <button onclick="manaSubmit()">Submit</button>
-                        <button onclick="Back()">Cancel</button>
-                    </div>
-                </div>
-            </div>
-            
+    input{
+        background:#eee;
+        padding: 12px 15px;
+        margin: 8px 15px;
+        width: 100%;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+    }
+
+    button{
+        color:white;
+        background:#1f316f;
+        transition: .5s ease-in;
+        border: white solid 1px;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 12px 55px;
+        margin: 20px;
+        border-radius: 20px;
+        outline: none;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: transform 80ms ease-in;
+        cursor: pointer; 
+        box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    }
+
+    button:hover{
+        box-shadow: 0 0 30px rgba(31,49,111,.5);
+        color: white;
+        background-image: linear-gradient(to right, #5b99c2 2%, #1f316f 100%);
+        transition: .5s ease-in;
+        border: white solid 1px;
+    }
+
+    button:active{
+        transform:scale(0.90);
+    }
+
+    #SignIn,#SignUp{
+        border:2px solid #fff;
+        background-color:#1f316f;
+    }
+
+    .container.right-panel-active .sign-In{
+        transform: translateX(100%);
+    }
+
+    .container.right-panel-active .sign-Up{
+        transform: translateX(100%);
+        opacity: 1;
+        z-index: 5;
+    }
+
+    .overlay{
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 50%;
+        height: 100%;
+        overflow:hidden;
+        transition: transform 0.6s ease-in-out;
+        z-index: 100;
+    }
+
+    .container.right-panel-active .overlay{
+        transform: translateX(-100%);
+    }
+
+    .overlay-layer{
+        position: relative;
+        color: white;
+        background:linear-gradient(to right, #5b99c2 2%, #1f316f 100%);
+        left: -100%;
+        height: 100%;
+        width: 200%;
+        background-image: url("Login-container.jpg");
+        transform: translateX(0);
+        transition: transform 0.6s ease-in-out;
+    }
+
+    .container.right-panel-active .overlay-layer{
+        transform: translateX(50%);
+    }
+
+    .overlay-layer-right, .overlay-layer-left{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0 40px;
+        text-align: center;
+        top:0;
+        height: 100%;
+        width: 50%;
+        transform: translateX(0);
+        transition: transform 0.6s ease-in-out;
+    }
+
+    .overlay-layer-left{
+        transform: translateX(-20%);
+    }
+
+    .overlay-layer-right{
+        right: 0;
+        transform: translateX(0);
+    }
+
+    .container.right-panel-active .overlay-layer-left{
+        transform: translateX(0);
+    } 
+
+    .container.right-panel-active .overlay-layer-right{
+        transform: translateX(20%);
+    }
+
+</style>
+
+<body>
+    <div class="container" id="container">
+        <div class="sign-Up">
+            <form>
+                <h1>Management</h1>
+                <input type="text" id="name" class="name" placeholder="Name" required>
+                <input type="password" id="password" class="password" placeholder="Password" required>
+                <input type="checkbox" onclick="">
+                <button onclick="">Submit</button>
+            </form>
         </div>
-    </body>
+        
+        <div class="sign-In">
+            <form>
+                <h1>Customer</h1>
+                <input type="text" id="name" class="name" placeholder="Username" required>
+                <input type="password" id="password" class="password" placeholder="Password" required>
+                <input type="checkbox" onclick="">
+                <button onclick="">Submit</button>
+            </form>
+        </div>    
+        
+        <div class="overlay">
+            <div class="overlay-layer">    
+                <div class="overlay-layer-right">
+                    <h1>Hii everyone!!!</h1>
+                    <button id="SignUp">Management</button>
+                </div>
+                
+                <div class="overlay-layer-left">
+                    <h1>Hello World!!!</h1>
+                    <button id="SignIn">Customer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const signUpButton = document.getElementById('SignUp');
+        const signInButton = document.getElementById('SignIn');
+        const container = document.getElementById('container');
+
+        signUpButton.addEventListener('click', () => {
+            container.classList.add("right-panel-active");
+        });
+
+        signInButton.addEventListener('click', () => {
+            container.classList.remove("right-panel-active");
+        });
+    </script>
+</body>
 </html>
