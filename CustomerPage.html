@@ -418,10 +418,28 @@
             const arrivalDate = document.getElementById('arrival-date').value;
 
         
-            if(Name && departureCity && arrivalCity && departureDate && arrivalDate){
-                alert('successfull!!')
-                clear()
+            if (Name && departureCity && arrivalCity && departureDate && arrivalDate) {
+                
+                const booking = {
+                    Name,
+                    departureCity,
+                    arrivalCity,
+                  departureDate,
+                    arrivalDate,
+                };
+
+                let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+                bookings.push(booking);
+                localStorage.setItem('bookings', JSON.stringify(bookings));
+
+                alert('Booking successful!');    
+                
+                Clear();
+            } 
+            else {
+                alert('Please fill in all the fields.');
             }
+
         }
 
         function clear(){

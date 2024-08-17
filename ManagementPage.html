@@ -70,7 +70,6 @@
                 <th>Arrival City</th>
                 <th>Departure Date</th>
                 <th>Return Date</th>
-                <th>Traveler Details</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -95,12 +94,11 @@
                 let row = document.createElement('tr');
 
                 row.innerHTML = `
-                    <td>${booking.name}</td>
+                    <td>${booking.Name}</td>
                     <td>${booking.departureCity}</td>
                     <td>${booking.arrivalCity}</td>
                     <td>${booking.departureDate}</td>
-                    <td>${booking.returnDate || 'N/A'}</td>
-                    <td>${booking.travelers}</td>
+                    <td>${booking.arrivalDate}</td>
                     <td><button class="btn-delete" onclick="deleteBooking(${index})">Delete</button></td>
                 `;
 
