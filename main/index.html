@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>InfineAIR</title>
+
+        <script src="iscript.js"></script>
+        <link rel="stylesheet" href="istyle.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>    
+    
+    <body>
+        <div id="top"></div>
+        <video id="background-video" autoplay loop muted>
+            <source src="bg1.mp4" type="video/mp4">
+        </video>
+
+        </video>
+        <div class="homepage" id="navv">
+            <nav class="nav">
+                <div class="navBox">
+                    <button onclick="scrollToSection('home')">Home</button>
+                    <button onclick="scrollToSection('about')">About</button>
+                    <button onclick="scrollToSection('contactus')">Contact Us</button>
+                    <button onclick="back()">Logout</button>
+                </div>
+            </nav>
+
+            <button class="scroll-to-top" onclick="scrollToSection('top')"><i class="fa-sharp-duotone fa-solid fa-arrow-up"></i></button>
+
+
+            <h2 id="hook">Book your dream flight now!</h2>
+            
+            
+            
+            <div class="container">
+                <div id="Home" class="section">
+                    <input type="text" id="name" class="name" placeholder="Name" required>
+                    
+                    
+                    <div class="city">
+                        <input type="text" id="departure-city" class="departure-city" placeholder="From:" required>
+                        <input type="text" id="arrival-city" class="arrival-city" placeholder="To:" required>
+                    </div>
+
+
+                    <div class="date">
+                        <div class="dep-date">
+                            <label for="departure-date">Departure : </label>
+                            <input type="date" id="departure-date" required>
+                        </div>
+                        <div class="arr-date">
+                            <label for="arrival-date">Arrival : </label>
+                            <input type="date" id="arrival-date" required>
+                        </div>
+                    </div>
+                    
+                    
+                    <button class="btn" onclick="book()">Search</button>
+                
+                
+                </div>
+            </div>
+            
+            
+        
+
+            <div id="about" class="section">
+                <strong>About Us</strong>
+                <p>
+                    Welcome to InfineAIR, your go-to platform for hassle-free flight ticket booking. Whether you're planning a vacation, a business trip, or a quick getaway, we've got you covered.
+                    Our website offers a user-friendly interface, making it easy to search for flights, compare prices, and book your tickets in just a few clicks.
+                </p>
+            
+            </div>
+        
+            <div id="contactus" class="section">
+                <div class="con">    
+                    <input type="text" class="con-name" placeholder="Name">
+                    <input type="email" class="con-email" placeholder="Email">
+                    <textarea cols="10" rows="5" class="message" placeholder="Message"></textarea>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+            </div>
+        </div>
+    
+        <footer>
+            <p>Welcome to InfineAIR</p>
+            <ul>
+                <a href="#navv">Home</a>
+                <a href="#about">About</a>
+                <a href="#contactus">Contact Us</a>
+                <a href="https://github.com/afk-Lokesh"><i class="fa-brands fa-github"></i> Github</a>
+                <a href="https://www.linkedin.com/in/lokesh-n-48b444271"><i class="fa-brands fa-linkedin"></i>  Linked in</a>
+            </ul>
+        </footer>
+    
+    </body>
+</html>
