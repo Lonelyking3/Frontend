@@ -5,235 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Login</title>
-
+    <link rel="stylesheet" href="Pstyle.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 
-<style>
-    *{
-        font-family: "Bebas Neue";
-        font-weight: 400;
-        font-style: normal;
-        box-sizing: border-box;
-    }   
-    
-    body{
-        background-image: url("Login-container.jpg");
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        min-height: 100%;
-        margin: 10%;
-    }
-
-    .container{
-        position:relative;
-        width: 768px;
-        max-width: 100%;
-        min-height: 480px;
-        background-color: white;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 0 30px rgba(0, 0, 0, .5);
-    }
-
-    .customer, .management{
-        position: absolute;
-        top:0;
-        left: 0;
-        height: 100%;
-        width: 50%;
-        transition: all 0.6s ease-in-out;
-        z-index: 1;
-    }
-
-    .management{
-        opacity: 0;
-        z-index: 1;
-    }
-
-    .customer{
-        z-index: 2;
-    }
-
-    form{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: white;
-        flex-direction: column;
-        padding: 0 50px;
-        height: 100%;
-    }
-
-    h1{
-        font-weight: bold;
-        margin: 0;
-    }
-
-    input{
-        background:#eee;
-        padding: 12px 15px;
-        margin: 8px 15px;
-        width: 100%;
-        border-radius: 5px;
-        border: none;
-        outline: none;
-    }
-
-    button{
-        color:white;
-        background:#1f316f;
-        transition: .5s ease-in;
-        border: black solid 1px;
-        font-size: 12px;
-        font-weight: bold;
-        padding: 12px 55px;
-        margin: 20px;
-        border-radius: 20px;
-        outline: none;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        transition: transform 80ms ease-in;
-        cursor: pointer; 
-        box-shadow: 0 0 30px rgba(0, 0, 0, .5);
-    }
-
-    button:hover{
-        box-shadow: 0 0 30px rgba(31,49,111,.5);
-        color: white;
-        background-image: linear-gradient(to right, #5b99c2 2%, #1f316f 100%);
-        transition: .5s ease-in;
-        border: white solid 1px;
-    }
-
-    button:active{
-        transform:scale(0.90);
-    }
-
-    #Cust-log,#mana-log{
-        border:2px solid #fff;
-        background-color:#1f316f;
-    }
-
-    .container.right-panel-active .customer{
-        transform: translateX(100%);
-    }
-
-    .container.right-panel-active .management{
-        transform: translateX(100%);
-        opacity: 1;
-        z-index: 5;
-    }
-
-    .overlay{
-        position: absolute;
-        top: 0;
-        left: 50%;
-        width: 50%;
-        height: 100%;
-        overflow:hidden;
-        transition: transform 0.6s ease-in-out;
-        z-index: 100;
-    }
-
-    .container.right-panel-active .overlay{
-        transform: translateX(-100%);
-    }
-
-    .overlay-layer{
-        position: relative;
-        color: white;
-        background:linear-gradient(to right, #5b99c2 2%, #1f316f 100%);
-        left: -100%;
-        height: 100%;
-        width: 200%;
-        background-image: url("Login-container.jpg");
-        transform: translateX(0);
-        transition: transform 0.6s ease-in-out;
-    }
-
-    .container.right-panel-active .overlay-layer{
-        transform: translateX(50%);
-    }
-
-    .overlay-layer-right, .overlay-layer-left{
-        position: absolute;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        padding: 0 40px;
-        text-align: center;
-        top:25px;
-        height: 100%;
-        width: 50%;
-        transform: translateX(0);
-        transition: transform 0.6s ease-in-out;
-    }
-
-    .overlay-layer-left{
-        transform: translateX(-20%);
-    }
-
-    .overlay-layer-right{
-        right: 0;
-        transform: translateX(0);
-    }
-
-    .container.right-panel-active .overlay-layer-left{
-        transform: translateX(0);
-    } 
-
-    .container.right-panel-active .overlay-layer-right{
-        transform: translateX(20%);
-    }
-
-    .eye-toggle{
-        position: relative;
-        top:-38px;
-        right: -110px;
-    }
-
-    .eye-toggle:active{
-        color:#1f316f;
-        transform:scale(.75);
-    }
-
-    .oneClick{
-        color: #1f316f;
-    }
-
-    .Social{
-        margin: 20px 0;
-    }
-
-    .Social a{
-        height: 40px;
-        width: 40px;
-        margin: 0 25px;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        background-color: #1f316f;
-        border: #1f316f solid 1px;
-        border-radius:50% ;
-        box-shadow: 0 0 30px rgba(0, 0, 0, .5);
-    }
-
-    .Social a:hover{
-        border: white solid 1px;
-        background:linear-gradient(to right, #5b99c2 2%, #1f316f 100%);
-        transition: .5s ease-in;
-    }
-</style>
-
 <body>
+    <script src="Pscript.js"></script>
     <div class="container" id="container">
 
 
@@ -294,8 +74,6 @@
 
 
 <script>
-    
-    
     // Eye-slash password
     const eyeToggles = document.querySelectorAll(".eye-toggle i");
 
@@ -328,45 +106,6 @@
     signInButton.addEventListener('click', () => {
         container.classList.remove("right-panel-active");
     });
-
-    //Login(customer):-
-    function cust_log(event){
-    event.preventDefault(); 
-    const user = document.getElementById('cname').value;
-    const pass = document.getElementById('cpassword').value;
-    if(user === 'customer' && pass === 'cust123'){
-        window.location.href = "index.html";
-        clr();
-    }
-    else{
-        alert('Invalid Details');
-        clr();
-    }
-    }
-
-    //Login(Admin):-
-    function mana_log(event){
-    event.preventDefault(); 
-    const user = document.getElementById('name').value;
-    const pass = document.getElementById('password').value;
-    if(user === 'management' && pass === 'mana123'){
-        window.location.href = "ManagementPage.html";
-        clr();
-    }
-    else{
-        alert('Invalid Details');
-        clr();
-    }
-    }
-
-    function clr(){
-        document.getElementById('cname').value = "";
-        document.getElementById('cpassword').value = "";
-        document.getElementById('name').value = "";
-        document.getElementById('password').value = "";
-        
-    }
-
 </script>
 
 

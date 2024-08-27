@@ -12,17 +12,15 @@ function book(){
             Name,
             departureCity,
             arrivalCity,
-          departureDate,
+            departureDate,
             arrivalDate,
         };
 
         let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
         bookings.push(booking);
-        localStorage.setItem('bookings', JSON.stringify(bookings));
-
-        alert('Booking successful!');    
-        
+        localStorage.setItem('bookings', JSON.stringify(bookings));    
         clear();
+        window.location.href = "BookingPage.html"
     } 
     else {
         alert('Please fill in all the fields.');

@@ -79,7 +79,7 @@
     <script>
         function loadBookings() {
             // Load bookings from localStorage
-            let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+            let bookings = JSON.parse(localStorage.getItem('ticket')) || [];
             
             // Check if bookings exist
             if (bookings.length === 0) {
@@ -90,15 +90,15 @@
             bookingsList.innerHTML = '';
 
             // Populate the table with booking data
-            bookings.forEach((booking, index) => {
+            bookings.forEach((updated_bookings, index) => {
                 let row = document.createElement('tr');
 
                 row.innerHTML = `
-                    <td>${booking.Name}</td>
-                    <td>${booking.departureCity}</td>
-                    <td>${booking.arrivalCity}</td>
-                    <td>${booking.departureDate}</td>
-                    <td>${booking.arrivalDate}</td>
+                    <td>${updated_bookings.Name}</td>
+                    <td>${updated_bookings.departureCity}</td>
+                    <td>${updated_bookings.arrivalCity}</td>
+                    <td>${updated_bookings.departureDate}</td>
+                    <td>${updated_bookings.arrivalDate}</td>
                     <td><button class="btn-delete" onclick="deleteBooking(${index})">Delete</button></td>
                 `;
 
@@ -106,13 +106,13 @@
             });
         }
 
-        function deleteBooking(index) {
-            // Remove the booking at the specified index
-            let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
-            bookings.splice(index, 1);
-            localStorage.setItem('bookings', JSON.stringify(bookings));
-            loadBookings();
-        }
+         function deleteBooking(index) {
+             // Remove the booking at the specified index
+             let book = JSON.parse(localStorage.getItem('ticket')) || [];
+             book.splice(index, 1);
+             localStorage.setItem('ticket', JSON.stringify(book));
+             loadBookings();
+         }
 
         function goBack() {
             // Redirect to the booking page
