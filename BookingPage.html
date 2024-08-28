@@ -4,28 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Your Flight</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {
+            font-family: "Bebas Neue", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            margin: 0;
+        }
+
+        .R {
+            position: relative;
+            right: 10px;
+        }
+
+        .arrD {
+            position: relative;
+            right: 80px;
+        }
+
+        .depD {
+            position: relative;
+            right: 50px;
+        }
+
+        input[type="text"],
+        input[type="date"] {
+            padding: 15px 20px;
+            border: none;
+            margin: 0 10px;
+            border-radius: 10px;
+            color: white;
+            background-color: rgba(49, 56, 125, 0.5);
+            font-size: 16px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        .UPbutton {
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .UPbutton:hover {
+            background-color: rgb(225, 225, 210);
+        }
+
+        label {
+            position: relative;
+            top: -48px;
+            right: -50px;
+            color: rgba(225, 225, 225, .80);
+        }
+
+        .container button {
+            border: none;
+            background-color: white;
+            border-radius: 20px;
+            padding: 15px 50px;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #007BFF;
+            padding: 50px 20px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        i {
+            position: relative;
+            left: 7px;
+            color: rgba(225, 225, 225, .80);
+            z-index: 1000000;
+        }
+    </style>
 </head>
-<style>
-    .mana{
-        display: none;
-    }
-</style>
 <body>
-    <input type="text" id="name" placeholder="Name">
-    <input type="text" id="dep" placeholder="Departure City">
-    <input type="text" id="arr" placeholder="Arrival City">
-    <input type="date" id="depD" placeholder="Departure Date">
-    <input type="date" id="arrD" placeholder="Arrival Date">
-    <button onclick="updateBooking()">Update Booking</button>
-    <button onclick="submit()" class="mana">Submit</button>
-    
+    <div class="UPbox">
+        <div class="container">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Name">
+            <label for="dep">From</label>
+            <input type="text" id="dep" placeholder="Departure City"><i class="fa fa-arrows-h"></i>
+            <label for="arr">To</label>
+            <input type="text" id="arr" placeholder="Arrival City">
+            <label class="D">Departure Date</label>
+            <input type="date" id="depD" class="depD">
+            <label class="R">Return Date</label>
+            <input type="date" id="arrD" class="arrD">
+            <button onclick="updateBooking()" class="UPbutton">Update Booking</button>
+        </div>
+    </div>
+
     <script>
-        // Function to load and display the latest booking
+        document.addEventListener("DOMContentLoaded", function() {
+            loadBooking();
+        });
+
         function loadBooking() {
             const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
 
             if (bookings.length > 0) {
-                // Access the latest booking (most recent)
                 const latestBooking = bookings[bookings.length - 1];
                 document.getElementById("name").value = latestBooking.Name || '';
                 document.getElementById("dep").value = latestBooking.departureCity || '';
@@ -34,8 +120,22 @@
                 document.getElementById("arrD").value = latestBooking.arrivalDate || '';
             }
         }
+        
+        
+        function UpdateloadBooking() {
+            const ticket = JSON.parse(localStorage.getItem('ticket')) || [];
 
-        // Function to update booking data
+            if (ticket.length > 0) {
+                const latestBooking = ticket[ticket.length - 1];
+                document.getElementById("name").value = latestBooking.Name || '';
+                document.getElementById("dep").value = latestBooking.departureCity || '';
+                document.getElementById("arr").value = latestBooking.arrivalCity || '';
+                document.getElementById("depD").value = latestBooking.departureDate || '';
+                document.getElementById("arrD").value = latestBooking.arrivalDate || '';
+            }
+        }
+
+
         function updateBooking() {
             const Name = document.getElementById('name').value;
             const departureCity = document.getElementById('dep').value;
@@ -44,7 +144,7 @@
             const arrivalDate = document.getElementById('arrD').value;
 
             if (Name && departureCity && arrivalCity && departureDate && arrivalDate) {
-                const updated_bookings = {
+                const updatedBookings = {
                     Name,
                     departureCity,
                     arrivalCity,
@@ -53,20 +153,15 @@
                 };
 
                 let ticket = JSON.parse(localStorage.getItem('ticket')) || [];
-                ticket.push(updated_bookings);
+                ticket = [updatedBookings];  // Keep only the latest booking
                 localStorage.setItem('ticket', JSON.stringify(ticket));
 
                 alert('Booking updated successfully!');
-                loadBooking(); // Load the updated booking data
+                UpdateloadBooking();
             } else {
                 alert('Please fill in all the fields.');
             }
-        }
-
-        // Initial load of the latest booking
-        loadBooking();
-
-        function submit(){
+            
             window.location.href = "ManagementPage.html";
         }
     </script>
