@@ -1,17 +1,21 @@
-    //Login(customer):-
-    function cust_log(event){
-        event.preventDefault(); 
-        const user = document.getElementById('cname').value;
-        const pass = document.getElementById('cpassword').value;
-        if(user === 'customer' && pass === 'cust123'){
-            window.location.href = "index.html";
-            clr();
-        }
-        else{
-            alert('Invalid Details');
-            clr();
-        }
-        }
+window.onload = function() {
+    document.getElementById('cname').focus();
+};
+
+function cust_log(event){
+    event.preventDefault(); 
+    const user = document.getElementById('cname').value;
+    const pass = document.getElementById('cpassword').value;
+
+    if (user === 'customer' && pass === 'cust123') {
+        window.location.href = '../index/index.html';
+    } else {
+        alert('Invalid Details');
+    }
+
+     clr(); 
+}
+
     
         //Login(Admin):-
         function mana_log(event){
@@ -19,7 +23,7 @@
         const user = document.getElementById('name').value;
         const pass = document.getElementById('password').value;
         if(user === 'management' && pass === 'mana123'){
-            window.location.href = "ManagementPage.html";
+            window.location.href = "../Admin/ManagementPage.html";
             clr();
         }
         else{

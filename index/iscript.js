@@ -1,3 +1,7 @@
+window.onload = function(){
+    document.getElementById('name').focus();
+}
+
 function book(){
     const Name = document.getElementById('name').value;
     const departureCity = document.getElementById('departure-city').value;
@@ -20,7 +24,7 @@ function book(){
         bookings.push(booking);
         localStorage.setItem('bookings', JSON.stringify(bookings));    
         clear();
-        window.location.href = "BookingPage.html"
+        window.location.href = "booking/BookingPage.html"
     } 
     else {
         alert('Please fill in all the fields.');
@@ -43,5 +47,5 @@ function scrollToSection(id){
 }
 
 function back(){
-    window.location.href = "project.html";
+    window.location.href = "../Login/Project.html";
 }
