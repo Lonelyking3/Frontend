@@ -8,7 +8,7 @@ function cust_log(event){
     const pass = document.getElementById('cpassword').value;
 
     if (user === 'customer' && pass === 'cust123') {
-        window.location.href = '../index/index.html';
+        window.location.href = '../index.html';
     } else {
         alert('Invalid Details');
     }
