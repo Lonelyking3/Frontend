@@ -5,6 +5,10 @@
     margin: 0;
 }
 
+body{
+    background-color: rgb(214, 210, 210);
+}
+
 .R {
     position: relative;
     right: 10px;
@@ -70,4 +74,19 @@ i {
     left: 7px;
     color: rgba(225, 225, 225, .80);
     z-index: 1000000;
+}
+
+
+.flight{
+    background-color: white;
+    text-align: center;
+    height: 150px;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 30px;
+}
+
+.UPbox{
+    position:fixed;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 1);
 }
