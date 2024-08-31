@@ -56,5 +56,5 @@ function updateBooking() {
         alert('Please fill in all the fields.');
     }
     
-    window.location.href = "ManagementPage.html";
+    window.location.href = "../Admin/ManagementPage.html";
 }
