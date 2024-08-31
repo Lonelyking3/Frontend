@@ -12,9 +12,19 @@ function loadBooking() {
         document.getElementById("arr").value = latestBooking.arrivalCity || '';
         document.getElementById("depD").value = latestBooking.departureDate || '';
         document.getElementById("arrD").value = latestBooking.arrivalDate || '';
+
+        document.getElementById('no2').innerHTML = `<h4 id="Dep">${latestBooking.departureCity}</h4> <h4 id="Ret">${latestBooking.arrivalCity}</h4> <h4 id="Frm">${latestBooking.departureDate}</h4> <h4 id="Reto">${latestBooking.arrivalDate}</h4>`
+        document.getElementById('no3').innerHTML = `<h4 id="Dep">${latestBooking.departureCity}</h4> <h4 id="Ret">${latestBooking.arrivalCity}</h4> <h4 id="Frm">${latestBooking.departureDate}</h4> <h4 id="Reto">${latestBooking.arrivalDate}</h4>`
+        document.getElementById('no4').innerHTML = `<h4 id="Dep">${latestBooking.departureCity}</h4> <h4 id="Ret">${latestBooking.arrivalCity}</h4> <h4 id="Frm">${latestBooking.departureDate}</h4> <h4 id="Reto">${latestBooking.arrivalDate}</h4>`
     }
+
+
+
 }
 
+
+
+                //Updated Data//
 
 function UpdateloadBooking() {
     const ticket = JSON.parse(localStorage.getItem('ticket')) || [];

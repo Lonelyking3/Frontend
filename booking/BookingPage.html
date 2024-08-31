@@ -13,31 +13,72 @@
     <script src="Bscript.js"></script>
 </head>
 <body>
-    
-    <div class="head_container">
 
+
+
+<div class="UPbox">
+    <div class="container">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Name">
+        <label for="dep">From</label>
+        <input type="text" id="dep" placeholder="Departure City"><i class="fa fa-arrows-h"></i>
+        <label for="arr">To</label>
+        <input type="text" id="arr" placeholder="Arrival City">
+        <label class="D">Departure Date</label>
+        <input type="date" id="depD" class="depD">
+        <label class="R">Return Date</label>
+        <input type="date" id="arrD" class="arrD">
+        <button onclick="updateBooking()" class="UPbutton">Update</button>
+    </div>
+</div>
+
+
+<section>
+
+    <div class="heading">
+        <h5 id="Dep">Departure</h5>
+        <h5 id="Ret">Return</h5>
+        <h5 id="Frm">From</h5>
+        <h5 id="Reto">To</h5>
+        <h5 id="Bookb">Price</h5>
+    </div>
+    
+    <div class="flight" id="no2">
+        <h4 id="Dep"></h4>
+        <h4 id="Ret"></h4>
+        <h4 id="Frm"></h4>
+        <h4 id="Reto"></h4>
+        <h4 id="Bookb"></h4>
+    </div>
+    <div class="flight" id="no3">
+        <h4 id="Dep"></h4>
+        <h4 id="Ret"></h4>
+        <h4 id="Frm"></h4>
+        <h4 id="Reto"></h4>
+        <h4 id="Bookb"></h4>
+    </div>
+    <div class="flight" id="no4">
+        <h4 id="Dep"></h4>
+        <h4 id="Ret"></h4>
+        <h4 id="Frm"></h4>
+        <h4 id="Reto"></h4>
+        <h4 id="Bookb"></h4>
     </div>
 
+</section>    
 
-    <div class="UPbox">
-        <div class="container">
-            <label for="name">Name</label>
-            <input type="text" id="name" placeholder="Name">
-            <label for="dep">From</label>
-            <input type="text" id="dep" placeholder="Departure City"><i class="fa fa-arrows-h"></i>
-            <label for="arr">To</label>
-            <input type="text" id="arr" placeholder="Arrival City">
-            <label class="D">Departure Date</label>
-            <input type="date" id="depD" class="depD">
-            <label class="R">Return Date</label>
-            <input type="date" id="arrD" class="arrD">
-            <button onclick="updateBooking()" class="UPbutton">Search</button>
-        </div>
+<aside>
+    <div class="filter">
+        
+        <h4 id="Dep"></h4>
+        <h4 id="Ret"></h4>
+        <h4 id="Frm"></h4>
+        <h4 id="Reto"></h4>
+        <h4 id="Bookb"></h4>
     </div>
-    
-    <div class="flight">drifgunj</div>
-    <div class="flight">drtfygvbhjn</div>
-    <div class="flight">trdcfgvb </div>
-    <div class="flight">rdtfgvhb</div>
+</aside>
+
 </body>
 </html>
+
+
