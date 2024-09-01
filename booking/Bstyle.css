@@ -101,11 +101,27 @@ h5{
 }
 
 
-#Dep{grid-column: 1; grid-row: 3;}
-#Ret{grid-column: 2; grid-row: 3;}
-#Frm{grid-column: 3; grid-row: 3;}
-#Reto{grid-column: 4; grid-row: 3;}
-#Bookb{grid-column: 5; grid-row: 3; border: none;} 
+.Dep{grid-column: 1; grid-row: 3;}
+.Ret{grid-column: 2; grid-row: 3;}
+.Frm{grid-column: 3; grid-row: 3;}
+.Reto{grid-column: 4; grid-row: 3;}
+.Bookb{grid-column: 5; grid-row: 3; border: none;}
+
+.flight .Dep, .flight .Ret, .flight .Frm, .flight .Reto{padding: 10px;}
+
+.flight .Bookb{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #007BFF;
+}
+
+.flight .Bookb:hover{
+    box-shadow: 0 0 30px rgba(31,49,111,.5);
+    color: white;
+    background-image: linear-gradient(to right, #5b99c2 2%, #1f316f 100%);
+    transition: .5s ease-in;
+    border: white solid 1px;
+}
 
 .flight{
     display:grid;
@@ -137,3 +153,6 @@ h5{
     border-radius: 10px;
 }
 
+.flight , .filter{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}

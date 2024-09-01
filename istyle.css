@@ -130,6 +130,10 @@ label{display: block;}
 #departure-date{padding: 20px;border-radius: 5px;}
 #arrival-date{padding: 20px; border-radius: 5px;}
 
+.dpcity{
+    background-color: white;
+    color: black;
+}
 
 .arr-date{
     position: relative;

@@ -40,8 +40,26 @@
                     
                     
                     <div class="city">
-                        <input type="text" id="departure-city" class="departure-city" placeholder="From:" required>
-                        <input type="text" id="arrival-city" class="arrival-city" placeholder="To:" required>
+                        <input type="text" id="departure-city" class="departure-city" placeholder="From:" list="departure-options" required>
+                        <datalist class="dpcity" id="departure-options">
+                            <option value="Bengalure (BLR)">
+                            <option value="Chennai (MAA)">
+                            <option value="Cochin (COK)">
+                            <option value="Delhi (DEL)">
+                            <option value="Kolkata (CCU)">
+                            <option value="Mumbai (BOM)">
+                        </datalist>
+                        
+                        <input type="text" id="arrival-city" class="arrival-city" placeholder="To:" list="departure-options" required>
+                        <datalist class="dpcity" id="departure-options">
+                            <option value="Bengalure (BLR)">
+                            <option value="Chennai (MAA)">
+                            <option value="Cochin (COK)">
+                            <option value="Delhi (DEL)">
+                            <option value="Kolkata (CCU)">
+                            <option value="Mumbai (BOM)">
+                        </datalist>
+                        
                     </div>
 
 
