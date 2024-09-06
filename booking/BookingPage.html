@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-In">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,16 +18,29 @@
 
 <div class="UPbox">
     <div class="container">
-        <label for="name">Name</label>
-        <input type="text" id="name" placeholder="Name">
         <label for="dep">From</label>
         <input type="text" id="dep" placeholder="Departure City"><i class="fa fa-arrows-h"></i>
         <label for="arr">To</label>
         <input type="text" id="arr" placeholder="Arrival City">
-        <label class="D">Departure Date</label>
+        <label class="D">Departure </label>
         <input type="date" id="depD" class="depD">
-        <label class="R">Return Date</label>
+        <label class="R">Return </label>
         <input type="date" id="arrD" class="arrD">
+        
+        <div class="dropDown">
+            
+            <label class="P">Passangers</label>
+            <input type="text" id="passan" class="passangers" value="1 Adult" readonly>
+            
+            
+            <div class="dropDown-contant">
+                <label class="lbl">Adult (Aged 12+ yrs) : <input type="number" class="passanger" id="adult" value="1" min="1"> </label>
+                <label class="lbl">Child (Aged 2 - 12+ yrs) : <input type="number" class="passanger" id="child" value="0" min="0"> </label>
+                <label class="lbl">Infant (Below 2yrs) : <input type="number" class="passanger" id="infant" value="0" min="0"> </label>
+                <button class="Sbtn" onclick="select()">Submit</button>
+            </div>
+        </div>
+
         <button onclick="updateBooking()" class="UPbutton">Update</button>
     </div>
 </div>
@@ -40,11 +53,12 @@
         <h5 class="Ret">Return</h5>
         <h5 class="Frm">From</h5>
         <h5 class="Reto">To</h5>
-        <h5 class="Bookb">Price</h5>
+
+        <h5 class="Bookb">book your flight</h5>
     </div>
     
     <div class="flight" id="no2">
-        <h4 class="Dep"></h4>
+        <h4 class="Dep"></h4><span class = "aro">
         <h4 class="Ret"></h4>
         <h4 class="Frm"></h4>
         <h4 class="Reto"></h4>
@@ -67,16 +81,6 @@
 
 </section>    
 
-<aside>
-    <div class="filter">
-        
-        <h4 id="Dep"></h4>
-        <h4 id="Ret"></h4>
-        <h4 id="Frm"></h4>
-        <h4 id="Reto"></h4>
-        <h4 id="Bookb"></h4>
-    </div>
-</aside>
 
 </body>
 </html>

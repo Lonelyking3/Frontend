@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+.dropDown{
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropDown-contant {
+            color: black;
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 350px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            padding: 12px;
+            border-radius: 10px;
+    }
+
+    .passangers{
+        text-align: center;
+        padding: 15px 200px;
+        border: none;
+        margin: 0 10px;
+        border-radius: 10px;
+        color: white;
+        background-color: rgba(49, 56, 125, 0.5);
+        font-size: 16px;
+    }
+
+    .dropDown:hover .dropDown-contant {
+            display: block;
+        }
+
+    .dropDown-contant label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+    .passanger{
+        border: none;
+        background-color: whitesmoke;
+        border-radius: 10px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+
+    .dropDown-contant button{
+        padding: 10px;
+    }
+</style>
+<body>
+    <div class="dropDown">
+        
+        <input type="text" class="passangers" value="1 Adult" readonly>
+        
+        
+        <div class="dropDown-contant">
+            <label class="lbl">Adult (Aged 12+ yrs) : <input type="number" class="passanger" id="adult" value="1" min="1"> </label>
+            <label class="lbl">Child (Aged 2 - 12+ yrs) : <input type="number" class="passanger" id="child" value="0" min="0"> </label>
+            <label class="lbl">Infant (Below 2yrs) : <input type="number" class="passanger" id="infant" value="0" min="0"> </label>
+            <button class="Sbtn" onclick="select()">Submit</button>
+        </div>
+    </div>
+</body>
+<script>
+
+// Dropdown content
+
+function select(){
+    Adult = document.getElementById('adult').value;
+    Child = document.getElementById('child').value;
+    Infant = document.getElementById('infant').value;
+
+    let passangerText = `${Adult} Adult`;
+    if(Adult > 1){
+        passangerText = `${Adult} Adults`;
+    }
+
+    if(Child > 0){
+        if(Child == 1){
+            passangerText += `, ${Child} Child`;
+        }
+        else{
+            passangerText += `, ${Child} Children`;
+        }
+    }
+    
+    if(Infant > 0){
+        if(Infant == 1){
+            passangerText += `, ${Infant} Infant`;
+        }
+        else{
+            passangerText += `, ${Infant} Infants`;
+        }
+    }
+
+
+    document.querySelector(".passangers").value = passangerText;
+    
+}
+
+document.addEventListener("DOMContentLoaded",function(){
+    select();
+});
+
+
+</script>
+
+</html>

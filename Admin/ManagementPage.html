@@ -45,31 +45,18 @@
             text-align: right;
             margin-bottom: 10px;
         }
-        .btn-back {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-        }
-        .btn-back:hover {
-            background-color: #2980b9;
-        }
     </style>
 </head>
 <body>
-    <div class="btn-container">
-        <button class="btn-back" onclick="goBack()">Go Back</button>
-    </div>
     <h3>Manage Booked Tickets</h3>
     <table id="bookings-table">
         <thead>
             <tr>
-                <th>Name</th>
                 <th>Departure City</th>
                 <th>Arrival City</th>
                 <th>Departure Date</th>
                 <th>Return Date</th>
+                <th>Passangers</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -93,12 +80,14 @@
             bookings.forEach((updated_bookings, index) => {
                 let row = document.createElement('tr');
 
+                const passangersData = Array.isArray(updated_bookings.passangers) ? updated_bookings.passangers.join(", ") : updated_bookings.passangers;
+
                 row.innerHTML = `
-                    <td>${updated_bookings.Name}</td>
                     <td>${updated_bookings.departureCity}</td>
                     <td>${updated_bookings.arrivalCity}</td>
                     <td>${updated_bookings.departureDate}</td>
                     <td>${updated_bookings.arrivalDate}</td>
+                    <td>${passangersData}</td>
                     <td><button class="btn-delete" onclick="deleteBooking(${index})">Delete</button></td>
                 `;
 
@@ -106,13 +95,13 @@
             });
         }
 
-         function deleteBooking(index) {
-             // Remove the booking at the specified index
-             let book = JSON.parse(localStorage.getItem('ticket')) || [];
-             book.splice(index, 1);
-             localStorage.setItem('ticket', JSON.stringify(book));
-             loadBookings();
-         }
+        function deleteBooking(index) {
+            // Remove the booking at the specified index
+            let book = JSON.parse(localStorage.getItem('ticket')) || [];
+            book.splice(index, 1);
+            localStorage.setItem('ticket', JSON.stringify(book));
+            loadBookings();
+        }
 
         function goBack() {
             // Redirect to the booking page

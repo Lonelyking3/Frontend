@@ -11,20 +11,26 @@ body{
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas: 
     "nav nav nav"
-    "aside section section"
-    "aside section section";
+    "section section section"
+    "section section section";
 }
-aside{grid-area: aside; margin: 30px 0 0 25px;}
 section{grid-area:section;}
+
+.UPbox{
+    grid-area: nav;
+    position:sticky;
+    top:0;
+    z-index: 1000000000;
+}
 
 .R {
     position: relative;
-    right: 10px;
+    right: -25px;
 }
 
 .arrD {
     position: relative;
-    right: 80px;
+    right: 60px;
 }
 
 .depD {
@@ -60,7 +66,93 @@ label {
     color: rgba(225, 225, 225, .80);
 }
 
-.container button {
+
+
+.dropDown{
+    position: relative;
+    left:-50px;
+    display: inline-block;
+}
+
+
+.dropDown-contant label {
+    color: black;
+}
+.dropDown-contant {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 350px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        padding: 12px;
+        border-radius: 10px;
+}
+
+.dropDown .passangers{
+    position: relative;
+    left: -50px;
+    text-align: center;
+    padding: 15px 20px;
+    border: none;
+    margin: 0 10px;
+    border-radius: 10px;
+    color: white;
+    background-color: rgba(49, 56, 125, 0.5);
+    font-size: 16px;
+}
+
+.dropDown:hover .dropDown-contant {
+        display: block;
+    }
+
+.dropDown-contant label {
+        display: block;
+        margin-bottom: 25px;
+    }
+
+.passanger{
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .5);
+    background-color: whitesmoke;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.Sbtn{
+    border: none;
+    background-color: #007BFF;
+    box-shadow: 0 5px 3px rgba(0, 0, 0, .5);
+    border-radius: 20px;
+    padding: 15px 50px;
+    margin: 0;
+}
+
+.Sbtn:hover{
+    color: white;
+    background-image: linear-gradient(to right, #5b99c2 2%, #1f316f 100%);
+    transition: .5s ease-in;
+    border: white solid 1px;
+}
+
+.lbl{
+    position: relative;
+    top: 5px;
+
+}
+
+.UPbutton{
     border: none;
     background-color: white;
     border-radius: 20px;
@@ -81,7 +173,7 @@ i {
     position: relative;
     left: 7px;
     color: rgba(225, 225, 225, .80);
-    z-index: 1000000;
+    z-index: 0;
 }
 
 .heading{
@@ -100,6 +192,12 @@ h5{
     border-right: 1px solid black;
 }
 
+.aro i{
+    color: black;
+    position: relative;
+    top: 65px;
+    left: 125px;
+}
 
 .Dep{grid-column: 1; grid-row: 3;}
 .Ret{grid-column: 2; grid-row: 3;}
@@ -140,19 +238,6 @@ h5{
 }
 
 
-.UPbox{
-    grid-area: nav;
-    position:sticky;
-    top:0;
-}
-
-.filter{
-    background-color: white;
-    height:75%;
-    width: 75%;
-    border-radius: 10px;
-}
-
-.flight , .filter{
+.flight{
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
